@@ -109,14 +109,30 @@ const findAndUpdate = (personName, done) => {
   })
 };
 
+
 const removeById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findByIdAndRemove(personId, function(err, data){
+    if(err) {
+      done(err);
+      return;
+    }
+
+  done(null , data);
+  })
 };
+
 
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
 
-  done(null /*, data*/);
+  Person.remove({name: nameToRemove}, function(err, data){
+    if(err) {
+      done(err);
+      return;
+    }
+
+  done(null , data);
+  })
 };
 
 const queryChain = (done) => {
@@ -124,6 +140,7 @@ const queryChain = (done) => {
 
   done(null /*, data*/);
 };
+
 
 /** **Well Done !!**
 /* You completed these challenges, let's go celebrate !
