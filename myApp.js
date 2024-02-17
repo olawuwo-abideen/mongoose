@@ -142,15 +142,15 @@ const queryChain = (done) => {
     .find({favoriteFoods:foodToSearch})
     .sort('name')
     .limit(2)
-    .select(['name', favoriteFoods])
+    .select(['name', 'favoriteFoods'])
     .exec(function(err, data){
       if (err) {
         done(err)
         return
       }
-    })
-
-  done(null /*, data*/);
+    console.log(data)
+  done(null , data);
+})
 };
 
 
